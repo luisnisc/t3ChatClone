@@ -17,14 +17,12 @@ export default function Input() {
 
   return (
     <div className="mx-auto">
-      <div
-        className="relative border-[#F9DCFD] bg-[#FBF0FB] rounded-2xl border-8 shadow-lg w-[42rem] h-[8rem] overflow-hidden"
-      >
+      <div className="relative border-[#F9DCFD] dark:border-purple-600 bg-[#FBF0FB] dark:bg-gray-800 rounded-2xl border-8 shadow-lg w-[42rem] h-[8rem] overflow-hidden transition-colors duration-200">
         <div className="p-4 pb-2 h-full flex flex-col">
           <textarea
             ref={textareaRef}
             placeholder="Escribe tu mensaje aquí..."
-            className="w-full flex-1 resize-none focus:outline-none focus:ring-0 bg-transparent text-gray-800 placeholder-gray-500 text-base leading-relaxed"
+            className="w-full flex-1 resize-none focus:outline-none focus:ring-0 bg-transparent text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 text-base leading-relaxed"
             onInput={handleResize}
           />
         </div>
@@ -34,12 +32,12 @@ export default function Input() {
             <select
               name="models"
               id="models"
-              className="text-sm text-[#AC1668] bg-transparent hover:bg-[#F9DCFD] focus:bg-[#F9DCFD] focus:outline-none rounded-lg px-2 py-1 border border-transparent hover:border-[#F9DCFD] transition-all"
+              className="text-sm text-[#AC1668] dark:text-purple-300 bg-transparent hover:bg-[#F9DCFD] dark:hover:bg-gray-700 focus:bg-[#F9DCFD] dark:focus:bg-gray-700 focus:outline-none rounded-lg px-2 py-1 border border-transparent hover:border-[#F9DCFD] dark:hover:border-gray-600 transition-all"
             >
               <option value="deepseek">DeepSeek</option>
             </select>
 
-            <button className="bg-[#F9DCFD] text-[#AC1668] hover:bg-purple-200 focus:bg-purple-200 rounded-full px-3 py-2 text-sm font-medium transition-all flex items-center gap-2 hover:scale-105">
+            <button className="bg-[#F9DCFD] dark:bg-gray-700 text-[#AC1668] dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-gray-600 focus:bg-purple-200 dark:focus:bg-gray-600 rounded-full px-3 py-2 text-sm font-medium transition-all flex items-center gap-2 hover:scale-105">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4"
@@ -58,7 +56,7 @@ export default function Input() {
             </button>
 
             <button
-              className="bg-[#F9DCFD] text-[#AC1668] hover:bg-purple-200 focus:bg-purple-200 rounded-full p-2 transition-all hover:scale-105"
+              className="bg-[#F9DCFD] dark:bg-gray-700 text-[#AC1668] dark:text-purple-300 hover:bg-purple-200 dark:hover:bg-gray-600 focus:bg-purple-200 dark:focus:bg-gray-600 rounded-full p-2 transition-all hover:scale-105"
               title="Adjuntar archivo"
             >
               <svg
@@ -78,7 +76,7 @@ export default function Input() {
             </button>
           </div>
 
-          <button className="text-white bg-[#CE98B4] hover:bg-purple-400 focus:bg-purple-400 rounded-full px-4 py-2 text-sm font-semibold transition-all flex items-center gap-2 hover:scale-105 focus:outline-none">
+          <button className="text-white bg-[#CE98B4] dark:bg-purple-600 hover:bg-purple-400 dark:hover:bg-purple-500 focus:bg-purple-400 dark:focus:bg-purple-500 rounded-full px-4 py-2 text-sm font-semibold transition-all flex items-center gap-2 hover:scale-105 focus:outline-none">
             <span>Enviar</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
