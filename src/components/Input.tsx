@@ -1,7 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
-export default function Input() {
+interface InputProps {
+  onSendMessage: (message: string) => void;
+}
+
+export default function Input({ onSendMessage }: InputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [inputValue, setInputValue] = useState("");
 
   const handleResize = () => {
     const textarea = textareaRef.current;
@@ -15,15 +20,32 @@ export default function Input() {
     handleResize();
   }, []);
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSendMessage(inputValue);
+    setInputValue(""); // Limpiar el input después de enviar
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      onSendMessage(inputValue);
+      setInputValue("");
+    }
+  };
+
   return (
     <div className="mx-auto">
       <div className="relative border-[#F9DCFD] dark:border-purple-600 bg-[#FBF0FB] dark:bg-gray-800 rounded-2xl border-8 shadow-lg w-[42rem] h-[8rem] overflow-hidden transition-colors duration-200">
         <div className="p-4 pb-2 h-full flex flex-col">
           <textarea
             ref={textareaRef}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             placeholder="Escribe tu mensaje aquí..."
             className="w-full flex-1 resize-none focus:outline-none focus:ring-0 bg-transparent text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 text-base leading-relaxed"
             onInput={handleResize}
+            onKeyPress={handleKeyPress}
           />
         </div>
 
@@ -76,7 +98,10 @@ export default function Input() {
             </button>
           </div>
 
-          <button className="text-white bg-[#CE98B4] dark:bg-purple-600 hover:bg-purple-400 dark:hover:bg-purple-500 focus:bg-purple-400 dark:focus:bg-purple-500 rounded-full px-4 py-2 text-sm font-semibold transition-all flex items-center gap-2 hover:scale-105 focus:outline-none">
+          <button
+            className="text-white bg-[#CE98B4] dark:bg-purple-600 hover:bg-purple-400 dark:hover:bg-purple-500 focus:bg-purple-400 dark:focus:bg-purple-500 rounded-full px-4 py-2 text-sm font-semibold transition-all flex items-center gap-2 hover:scale-105 focus:outline-none"
+            onClick={handleSubmit}
+          >
             <span>Enviar</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,7 @@ import React from "react";
 export default function Sidebar() {
   return (
     <>
-      <div className="w-64 h-full bg-[#F4E5F6] dark:bg-gray-800 shadow-lg p-4 rounded-lg absolute top-0 left-0 text-center transition-colors duration-200">
+      <div className="w-64 h-full bg-[#F4E5F6] dark:bg-[#1E2939] shadow-lg p-4 rounded-lg absolute top-0 left-0 text-center transition-colors duration-200">
         <h2 className="text-xl font-semibold mb-4 text-[#CA0277] dark:text-purple-300">
           T3.chat
         </h2>
