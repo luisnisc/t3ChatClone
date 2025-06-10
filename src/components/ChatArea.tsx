@@ -23,12 +23,10 @@ export default function ChatArea({ messages }: ChatAreaProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Crear el estilo dinámicamente usando useMemo para forzar re-render
   const syntaxStyle = useMemo(() => {
     return theme === "dark" ? oneDark : oneLight;
   }, [theme]);
 
-  // Crear el customStyle dinámicamente
   const customStyle = useMemo(
     () => ({
       margin: 0,
@@ -67,7 +65,7 @@ export default function ChatArea({ messages }: ChatAreaProps) {
 
   return (
     <>
-      <div className=" shadow-md dark:border-gray-600 h-[100%] bg-white dark:bg-gray-800 rounded-lg transition-colors duration-200">
+      <div className=" shadow-md dark:border-gray-600 h-[100%] w-[45rem] bg-white dark:bg-gray-800 rounded-lg transition-colors duration-200 ">
         <div
           ref={chatContainerRef}
           className="p-4 overflow-y-auto h-full w-full scroll-smooth"
@@ -125,7 +123,7 @@ export default function ChatArea({ messages }: ChatAreaProps) {
                               </span>
                             </div>
                             <button
-                              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1.5 hover:bg-gray-700 dark:hover:bg-gray-600 rounded text-gray-300 hover:text-white"
+                              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-1.5 hover:bg-gray-700 dark:hover:bg-gray-600 rounded text-gray-300 hover:text-white cursor-pointer"
                               onClick={() => {
                                 navigator.clipboard.writeText(String(children));
                                 Swal.fire({
@@ -169,7 +167,7 @@ export default function ChatArea({ messages }: ChatAreaProps) {
                           </div>
                           <div className="relative rounded-b-lg overflow-hidden">
                             <SyntaxHighlighter
-                              key={`${theme}-${index}`} // Key simplificada pero efectiva
+                              key={`${theme}-${index}`} 
                               language={
                                 className?.replace("language-", "") || "text"
                               }

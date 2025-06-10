@@ -141,23 +141,18 @@ function App() {
 
   useTheme();
 
-  // Función para manejar el envío de nuevos mensajes
   const handleSendMessage = (content: string) => {
-    if (content.trim() === "") return; // No enviar mensajes vacíos
+    if (content.trim() === "") return; 
 
-    // Crear el nuevo mensaje del usuario
     const newUserMessage = {
-      id: Date.now().toString(), // ID único basado en timestamp
+      id: Date.now().toString(), 
       content: content.trim(),
       sender: "user" as const,
       timestamp: new Date().toISOString(),
     };
 
-    // Agregar el mensaje del usuario
     setMessages((prev) => [...prev, newUserMessage]);
 
-    // Aquí podrías agregar lógica para generar una respuesta automática del bot
-    // Por ejemplo, después de un delay:
     setTimeout(() => {
       const botResponse = {
         id: (Date.now() + 1).toString(),
@@ -169,26 +164,26 @@ function App() {
     }, 1000);
   };
 
-  return (
-    <>
-      <div className="flex h-screen w-screen overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-200">
-        <div className="absolute top-0 right-0 p-4 z-10">
-          <ThemeToggle />
-        </div>
-        <Sidebar />
-        <div className="flex-1 flex flex-col items-center justify-center ml-64">
-          <div className="w-[42rem] flex flex-col gap-4 h-full max-h-[calc(100vh-2rem)]">
-            <div className="flex-1 min-h-0 ">
-              <ChatArea messages={Messages} />
-            </div>
-            <div className="flex-shrink-0">
-              <Input onSendMessage={handleSendMessage} />
+    return (
+      <>
+        <div className="flex h-screen w-screen overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-200">
+          <div className="absolute top-0 right-0 p-4 z-10">
+            <ThemeToggle />
+          </div>
+          <Sidebar />
+          <div className="flex-1 flex flex-col items-center justify-center ml-64">
+            <div className="w-[42rem] flex flex-col gap-4 h-full max-h-[calc(100vh-2rem)]">
+              <div className="flex-1 min-h-0 flex items-center justify-center">
+                <ChatArea messages={Messages} />
+              </div>
+              <div className="flex-shrink-0 flex justify-center">
+                <Input onSendMessage={handleSendMessage} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
 }
 
 export default App;

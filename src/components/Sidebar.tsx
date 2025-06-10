@@ -5,7 +5,7 @@ export default function Sidebar() {
     <>
       <div className="w-64 h-full bg-[#F4E5F6] dark:bg-[#1E2939] shadow-lg p-4 rounded-lg absolute top-0 left-0 text-center transition-colors duration-200">
         <h2 className="text-xl font-semibold mb-4 text-[#CA0277] dark:text-purple-300">
-          T3.chat
+          ChAI
         </h2>
         <button className="bg-[#AB4774] hover:bg-[#D66B9E] dark:bg-purple-600 dark:hover:bg-purple-500 focus:bg-purple-200 dark:focus:bg-purple-700 rounded-full px-4 py-2 text-sm font-semibold transition-all flex items-center gap-2 hover:scale-105 focus:outline-none w-full justify-center text-white cursor-pointer">
           New Chat
